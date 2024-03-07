@@ -1,0 +1,29 @@
+.result {
+    width: max-content;
+    margin: auto;
+    padding: 10px;
+    color: gray;
+}
+
+.table {
+    width: 80%;
+    margin: auto;
+    th {
+        text-align: center;
+
+
+    }
+    td {
+        text-align: center;
+        .answer {
+            display: block;
+            text-align: center;
+        }
+    }
+}
+
+.waitMessage {
+    padding: 100px;
+    text-align: center;
+
+}

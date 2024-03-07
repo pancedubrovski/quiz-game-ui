@@ -1,0 +1,54 @@
+<div class="result">
+    <span>Your score is {{ score }} There are {{ gameService.onlineUsers }} users currently online</span>
+</div>
+<div *ngIf="waitngPlayers" class="waitMessage">
+    <mat-card>
+        <mat-card-content>Wait to join player to start game</mat-card-content>
+      </mat-card>
+</div>
+<div  *ngIf="!waitngPlayers" class="table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> # </th>
+            <td mat-cell *matCellDef="let element"> {{element.index}} </td>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="expresion">
+            <th mat-header-cell *matHeaderCellDef> Expresion </th>
+            <td mat-cell *matCellDef="let element"> {{element.expression}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="answer">
+            <th mat-header-cell *matHeaderCellDef>Your Answer </th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="checkStatus(element.questionId) == true && element.kind == 'Question'">
+                    <button mat-button color="primary" (click)="answerQustion({questionId: element.questionId,
+                        isCorrected: true,
+                        isBonusQuestion: false})">Yes</button>
+                    <button mat-button color="warn" (click)="answerQustion({questionId: element.questionId,
+                        isCorrected: false,
+                        isBonusQuestion: false})">No</button>
+                </div>
+                <div *ngIf="checkStatus(element.questionId) == true && element.kind == 'BonusQuestion'">
+                    <mat-form-field>
+                        <input type="number" matInput (keyup.enter)="answerQustion({
+                            questionId: element.questionId,
+                            isBonusQuestion: true})" placeholder="Your Answer" [formControl]="answerControll">
+                    </mat-form-field>
+                </div>
+                <span class="answer" *ngIf="checkStatus(element.questionId) == false">{{element?.answer}}</span>
+            </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="result">
+            <th mat-header-cell *matHeaderCellDef> Result </th>
+            <td mat-cell *matCellDef="let element"> {{ element.result }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+
+    <h1 >{{ username }}</h1>
+
+    <h2 style="margin-left: 10px;">  Best Score:  {{ bestScore }}</h2>
+    <span  class="spacer"></span>
+    <div class="logout-button">
+        <button mat-button (click)="logout()">logout</button>
+    </div>
+</mat-toolbar>
+<game [score]="score"></game>
