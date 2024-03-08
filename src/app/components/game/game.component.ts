@@ -28,8 +28,7 @@ export class GameComponent {
   public displayedColumns = ['position', 'expresion', 'answer', 'result'];
   public gameStatus: string = "";
   public waitngPlayers = true;
-  @Input() score: number = 0;
-
+  public score = 0;
   public answerControll: FormControl = new FormControl('');
 
 

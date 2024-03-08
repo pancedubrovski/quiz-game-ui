@@ -5,7 +5,7 @@ import { AnswerQuestion } from '../models/answerQuestion';
 import { ChangeQuestion } from '../models/changeQuestion';
 import { ADD_USER_DATA, ANSWER_QUESTION_EVENT, NEXT_QUESTION, ONLINE_USERS, ON_ANSWER_QUESTION_EVENT, START_GAME, USER_CONNECTED } from '../models/constants';
 import { HttpClient } from '@angular/common/http';
-import { GameModel } from '../models/startGame';
+import { GameModel } from '../models/gameModel';
 
 
 @Injectable({

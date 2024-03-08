@@ -4,7 +4,7 @@ import { Params, Router } from '@angular/router';
 import { CURRENT_USER, ROOM_NAME } from '../../models/constants';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
-import { GameModel } from '../../models/startGame';
+import { GameModel } from '../../models/gameModel';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,6 @@ export class LoginComponent {
 
   public error: any;
   public isRegister: boolean = false;
-
   constructor(protected userService: UserService, private router: Router) {
 
   }
@@ -67,7 +66,7 @@ export class LoginComponent {
   public setDataToSession(gameModel: GameModel){
     sessionStorage.setItem(CURRENT_USER, gameModel.username);
     sessionStorage.setItem(ROOM_NAME, gameModel.roomName);
-    const queryParams: Params = { gameStatus: gameModel.gameStatus };
+    const queryParams: Params = { gameStatus: gameModel.gameStatus,bestScore: gameModel.bestScore };
     this.router.navigate(['/'],{ queryParams });
   }
 }

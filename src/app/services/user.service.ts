@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { environment } from '../../environments/environments';
-import { GameModel } from '../models/startGame';
+import { GameModel } from '../models/gameModel';
 import { LogoutModel } from '../models/logoutModel';
 
 @Injectable({
